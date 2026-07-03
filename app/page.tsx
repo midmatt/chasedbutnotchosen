@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Hero from "@/components/Hero";
+import WhatsInside from "@/components/WhatsInside";
 
 export default function Home() {
   return (
@@ -266,120 +267,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pages-section" id="inside">
-        <div className="section-inner">
-          <div className="divider">
-            <span className="heart-icon">♡</span>
-          </div>
-          <h2 className="section-title">
-            What&apos;s <em>Inside</em>
-          </h2>
-          <p className="section-sub">
-            Every page was written with intention — to help you see clearly, feel
-            honestly, and move forward.
-          </p>
-          <div className="pages-grid">
-            <div className="page-card">
-              <Image
-                src="/images/reality-check.png"
-                alt="The Reality Check"
-                width={400}
-                height={220}
-              />
-              <div className="page-card-body">
-                <div className="page-card-title">The Reality Check</div>
-                <p className="page-card-desc">
-                  Getting honest with myself is the first step to freedom. Explore
-                  why you found yourself here, your biggest triggers, and what
-                  you&apos;re finally ready to see.
-                </p>
-              </div>
-            </div>
-            <div className="page-card">
-              <Image
-                src="/images/checklist.png"
-                alt="The Checklist I Wish I Had Sooner"
-                width={400}
-                height={220}
-              />
-              <div className="page-card-body">
-                <div className="page-card-title">
-                  The Checklist I Wish I Had Sooner
-                </div>
-                <p className="page-card-desc">
-                  Things you shouldn&apos;t have ignored. A powerful
-                  self-reflection tool to identify red flags you may have excused
-                  or explained away.
-                </p>
-              </div>
-            </div>
-            <div className="page-card">
-              <Image
-                src="/images/keeping-receipts.png"
-                alt="Keeping Receipts"
-                width={400}
-                height={220}
-              />
-              <div className="page-card-body">
-                <div className="page-card-title">Keeping Receipts</div>
-                <p className="page-card-desc">
-                  This is your space to document the patterns — not to be bitter,
-                  but to be clear. Accountability, what was withheld, and how you
-                  choose yourself from here.
-                </p>
-              </div>
-            </div>
-            <div className="page-card">
-              <Image
-                src="/images/how-i-can-choose-me.png"
-                alt="How I Can Choose Me"
-                width={400}
-                height={220}
-              />
-              <div className="page-card-body">
-                <div className="page-card-title">How I Can Choose Me</div>
-                <p className="page-card-desc">
-                  This is your plan. Your standards. Your future. Behaviors to
-                  recognize, mindset shifts to make, and what you will no longer
-                  tolerate — specifically.
-                </p>
-              </div>
-            </div>
-            <div className="page-card">
-              <Image
-                src="/images/my-personal-experiences.png"
-                alt="My Personal Experiences"
-                width={400}
-                height={220}
-              />
-              <div className="page-card-body">
-                <div className="page-card-title">My Personal Experiences</div>
-                <p className="page-card-desc">
-                  Your space to write freely — what happened, how it made you
-                  feel, and what you need to remember. Repeat across multiple
-                  entries.
-                </p>
-              </div>
-            </div>
-            <div className="page-card">
-              <Image
-                src="/images/things-i-need-to-remember.png"
-                alt="Things I Need to Remember"
-                width={400}
-                height={220}
-              />
-              <div className="page-card-body">
-                <div className="page-card-title">Things I Need to Remember</div>
-                <p className="page-card-desc">
-                  Open-lined notes pages to capture thoughts, breakthroughs,
-                  affirmations, or anything your healing heart needs to hold on
-                  to.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <WhatsInside />
 
       <section className="checklist-section" id="checklist">
         <div className="section-inner">
