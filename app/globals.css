@@ -26,16 +26,16 @@
   /* Great Vibes script — scale up for readability */
   .section-sub { font-size: 1.55rem !important; line-height: 1.5 !important; margin-bottom: 40px !important; }
   .hero-subtitle { font-size: 1.6rem !important; line-height: 1.45 !important; }
-  .ded-cta { font-size: 1.9rem !important; }
-  .ded-closing { font-size: 1.4rem !important; line-height: 1.6 !important; }
-  .ded-item { font-size: 1.4rem !important; line-height: 1.55 !important; }
+  .ded-cta { font-size: clamp(1.2rem, 2.5vw + 0.75rem, 1.9rem) !important; }
+  .ded-closing { font-size: clamp(1rem, 1.8vw + 0.65rem, 1.4rem) !important; line-height: 1.65 !important; }
+  .ded-item { font-size: clamp(1.05rem, 2vw + 0.65rem, 1.4rem) !important; line-height: 1.6 !important; }
   .testi-text { font-size: 1.4rem !important; line-height: 1.55 !important; }
   .quote-pullout p { font-size: 1.4rem !important; line-height: 1.55 !important; }
   .reminders-label { font-size: 1.5rem !important; }
   .reminder-item { font-size: 1.25rem !important; line-height: 1.55 !important; }
   .hero-quote p { font-size: 1.35rem !important; line-height: 1.5 !important; }
-  .dedication-header { font-size: 1.8rem !important; }
-  .ded-title { font-family: 'Libre Baskerville', serif !important; font-size: 2.6rem !important; }
+  .dedication-header { font-size: clamp(1.15rem, 2.5vw + 0.75rem, 1.8rem) !important; line-height: 1.45 !important; }
+  .ded-title { font-family: 'Libre Baskerville', serif !important; font-size: clamp(1.75rem, 4vw + 0.75rem, 2.6rem) !important; }
   .nav-brand { font-family: 'Great Vibes', cursive !important; font-size: 1.4rem !important; }
 
   /* ── NAV ── */
@@ -357,6 +357,8 @@
     font-weight: 400;
     color: var(--text-dark);
     margin-bottom: 4px;
+    line-height: 1.45;
+    text-wrap: balance;
   }
   .dedication-header em { font-style: italic; color: var(--rose-deep); }
   .ded-title {
@@ -365,13 +367,17 @@
     font-weight: 600;
     color: var(--text-dark);
     margin: 20px 0 30px;
+    line-height: 1.15;
   }
   .ded-item {
     font-family: 'Great Vibes', cursive;
     font-size: 1.6rem;
-    line-height: 1.7;
+    line-height: 1.6;
     color: var(--text-mid);
     margin-bottom: 20px;
+    max-width: 36ch;
+    margin-inline: auto;
+    text-wrap: pretty;
   }
   .ded-cta {
     font-family: 'Libre Baskerville', serif;
@@ -833,4 +839,13 @@
     }
     .page-viewer-nav--prev { left: 8px; }
     .page-viewer-nav--next { right: 8px; }
+    .dedication-inner { padding: 48px 24px; }
+    .ded-title { margin: 14px 0 22px; }
+    .ded-item {
+      max-width: 100%;
+      margin-bottom: 14px;
+    }
+    .ded-cta { margin: 20px 0 14px; }
+    .dedication-section .divider { margin: 18px 0; }
+    .dedication-section .heart-icon { font-size: 1rem; }
   }
