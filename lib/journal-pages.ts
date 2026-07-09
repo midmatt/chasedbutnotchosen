@@ -18,13 +18,13 @@ export const JOURNAL_PAGES: JournalPage[] = [
     height: 1463,
   },
   {
-    src: "/images/checklist.png",
-    title: "The Checklist I Wish I Had Sooner",
+    src: "/images/quotes.png",
+    title: "Quotes to Remember",
     description:
-      "Things you shouldn't have ignored. A powerful self-reflection tool to identify red flags you may have excused or explained away.",
-    alt: "The Checklist I Wish I Had Sooner",
-    width: 1130,
-    height: 1463,
+      "Gentle affirmations and reminders for the moments you need them most — about healing, self-worth, and choosing yourself again.",
+    alt: "Quotes to Remember",
+    width: 1126,
+    height: 1462,
   },
   {
     src: "/images/keeping-receipts.png",
