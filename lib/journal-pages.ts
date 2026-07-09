@@ -7,9 +7,6 @@ export type JournalPage = {
   height: number;
 };
 
-export const JOURNAL_PAGE_WIDTH = 1130;
-export const JOURNAL_PAGE_HEIGHT = 1466;
-
 export const JOURNAL_PAGES: JournalPage[] = [
   {
     src: "/images/reality-check.png",
@@ -17,8 +14,8 @@ export const JOURNAL_PAGES: JournalPage[] = [
     description:
       "Getting honest with myself is the first step to freedom. Explore why you found yourself here, your biggest triggers, and what you're finally ready to see.",
     alt: "The Reality Check",
-    width: JOURNAL_PAGE_WIDTH,
-    height: JOURNAL_PAGE_HEIGHT,
+    width: 1130,
+    height: 1463,
   },
   {
     src: "/images/checklist.png",
@@ -26,8 +23,8 @@ export const JOURNAL_PAGES: JournalPage[] = [
     description:
       "Things you shouldn't have ignored. A powerful self-reflection tool to identify red flags you may have excused or explained away.",
     alt: "The Checklist I Wish I Had Sooner",
-    width: JOURNAL_PAGE_WIDTH,
-    height: JOURNAL_PAGE_HEIGHT,
+    width: 1130,
+    height: 1463,
   },
   {
     src: "/images/keeping-receipts.png",
@@ -35,8 +32,8 @@ export const JOURNAL_PAGES: JournalPage[] = [
     description:
       "This is your space to document the patterns — not to be bitter, but to be clear. Accountability, what was withheld, and how you choose yourself from here.",
     alt: "Keeping Receipts",
-    width: JOURNAL_PAGE_WIDTH,
-    height: JOURNAL_PAGE_HEIGHT,
+    width: 1130,
+    height: 1462,
   },
   {
     src: "/images/how-i-can-choose-me.png",
@@ -44,8 +41,8 @@ export const JOURNAL_PAGES: JournalPage[] = [
     description:
       "This is your plan. Your standards. Your future. Behaviors to recognize, mindset shifts to make, and what you will no longer tolerate — specifically.",
     alt: "How I Can Choose Me",
-    width: JOURNAL_PAGE_WIDTH,
-    height: JOURNAL_PAGE_HEIGHT,
+    width: 1128,
+    height: 1458,
   },
   {
     src: "/images/my-personal-experiences.png",
@@ -53,8 +50,8 @@ export const JOURNAL_PAGES: JournalPage[] = [
     description:
       "Your space to write freely — what happened, how it made you feel, and what you need to remember. Repeat across multiple entries.",
     alt: "My Personal Experiences",
-    width: JOURNAL_PAGE_WIDTH,
-    height: JOURNAL_PAGE_HEIGHT,
+    width: 1126,
+    height: 1456,
   },
   {
     src: "/images/things-i-need-to-remember.png",
@@ -62,7 +59,7 @@ export const JOURNAL_PAGES: JournalPage[] = [
     description:
       "Open-lined notes pages to capture thoughts, breakthroughs, affirmations, or anything your healing heart needs to hold on to.",
     alt: "Things I Need to Remember",
-    width: JOURNAL_PAGE_WIDTH,
-    height: JOURNAL_PAGE_HEIGHT,
+    width: 1126,
+    height: 1458,
   },
 ];

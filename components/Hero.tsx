@@ -49,11 +49,12 @@ export default function Hero() {
         <Image
           src={BOOK_COVER_SRC}
           alt="Being Chased But Not Chosen Journal Cover"
-          width={1136}
-          height={1464}
+          width={1130}
+          height={1461}
           className="book-mockup"
           priority
           sizes="(max-width: 768px) 292px, 371px"
+          style={{ height: "auto" }}
         />
         <div className="floating-badge">
           <span className="badge-price">$19.99</span>

@@ -274,7 +274,9 @@ export default function Home() {
                 src="/images/checklist.png"
                 alt="The Checklist"
                 width={1130}
-                height={1466}
+                height={1463}
+                sizes="(max-width: 768px) 100vw, 540px"
+                style={{ height: "auto" }}
               />
             </div>
             <div>

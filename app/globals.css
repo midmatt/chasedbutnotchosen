@@ -226,11 +226,8 @@
     position: relative; z-index: 2;
   }
   .book-mockup {
-    width: 371px;
-    max-width: 100%;
+    width: min(371px, 100%);
     height: auto;
-    aspect-ratio: 2 / 3;
-    object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 24px 80px rgba(139,58,58,0.22), 0 8px 24px rgba(139,58,58,0.12);
     transform: rotate(-3deg);
@@ -461,12 +458,15 @@
     transform: translateY(-6px);
     box-shadow: 0 16px 40px rgba(139,58,58,0.12);
   }
-  .page-card img {
+  .page-card-preview {
+    position: relative;
     width: 100%;
-    height: 220px;
-    object-fit: cover;
-    object-position: top;
-    display: block;
+    overflow: hidden;
+    background: var(--parchment);
+  }
+  .page-card-image {
+    object-fit: contain;
+    object-position: top center;
   }
   .page-card-body { padding: 18px 18px 22px; }
   .page-card-title {
@@ -586,14 +586,19 @@
   }
   .page-viewer-image-wrap {
     position: relative;
-    aspect-ratio: 1130 / 1466;
-    height: min(
+    width: min(
+      calc(100vw - var(--page-viewer-horizontal-inset)),
+      calc(
+        (100dvh - var(--page-viewer-toolbar-height) - var(--page-viewer-vertical-inset) - max(24px, env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px)))
+        / var(--page-height-ratio, 1.29)
+      ),
+      620px
+    );
+    height: auto;
+    max-height: min(
       calc(100dvh - var(--page-viewer-toolbar-height) - var(--page-viewer-vertical-inset) - max(24px, env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px))),
-      calc((100vw - var(--page-viewer-horizontal-inset)) * 1466 / 1130),
       960px
     );
-    width: auto;
-    max-width: calc(100vw - var(--page-viewer-horizontal-inset));
     line-height: 0;
     border-radius: 8px;
     overflow: hidden;
@@ -635,6 +640,8 @@
     border-radius: 12px;
     box-shadow: 0 20px 60px rgba(139,58,58,0.18);
     width: 100%;
+    height: auto;
+    object-fit: contain;
   }
   .checklist-items { display: flex; flex-direction: column; gap: 18px; }
   .check-item {
@@ -779,10 +786,10 @@
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-text { padding: 50px 24px 30px; }
     .hero-visual { padding: 20px 24px 50px; }
-    .book-mockup { width: 292px; }
+    .book-mockup { width: min(292px, 100%); }
     .floating-badge { right: 20px; }
     .why-grid, .two-col, .checklist-grid, .pages-grid { grid-template-columns: 1fr; }
-    .pages-grid { grid-template-columns: 1fr 1fr; }
+    .pages-grid { grid-template-columns: 1fr; }
     .testimonials { grid-template-columns: 1fr; }
     .section-inner { padding: 60px 24px; }
     .purchase-card { padding: 36px 24px; }

@@ -66,12 +66,20 @@ export default function WhatsInside() {
               onClick={() => setActiveIndex(index)}
               aria-label={`View full page: ${page.title}`}
             >
-              <Image
-                src={page.src}
-                alt={page.alt}
-                width={page.width}
-                height={page.height}
-              />
+              <div
+                className="page-card-preview"
+                style={{
+                  aspectRatio: `${page.width} / ${page.height}`,
+                }}
+              >
+                <Image
+                  src={page.src}
+                  alt={page.alt}
+                  fill
+                  className="page-card-image"
+                  sizes="(max-width: 768px) 45vw, 320px"
+                />
+              </div>
               <div className="page-card-body">
                 <div className="page-card-title">{page.title}</div>
                 <p className="page-card-desc">{page.description}</p>
@@ -124,7 +132,14 @@ export default function WhatsInside() {
               ‹
             </button>
 
-            <div className="page-viewer-image-wrap">
+            <div
+              className="page-viewer-image-wrap"
+              style={{
+                aspectRatio: `${activePage.width} / ${activePage.height}`,
+                ["--page-height-ratio" as string]:
+                  activePage.height / activePage.width,
+              }}
+            >
               <Image
                 src={activePage.src}
                 alt={activePage.alt}
@@ -132,6 +147,7 @@ export default function WhatsInside() {
                 className="page-viewer-image"
                 sizes="(max-width: 768px) calc(100vw - 96px), 620px"
                 priority
+                style={{ objectFit: "contain" }}
               />
             </div>
 
