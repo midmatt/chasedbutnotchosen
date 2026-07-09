@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SuccessConfetti from "@/components/SuccessConfetti";
 
 type SuccessPageProps = {
   searchParams: Promise<{ session_id?: string }>;
@@ -9,6 +10,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
 
   return (
     <main className="purchase-section" style={{ minHeight: "100vh", paddingTop: 80 }}>
+      {sessionId ? <SuccessConfetti /> : null}
       <div className="section-inner">
         <div className="purchase-card">
           <div className="purchase-title">

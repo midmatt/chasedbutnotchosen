@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BuyNowButton from "@/components/BuyNowButton";
 import Hero from "@/components/Hero";
 import WhatsInside from "@/components/WhatsInside";
 
@@ -18,9 +19,7 @@ export default function Home() {
             <a href="#checklist">The Checklist</a>
           </li>
           <li>
-            <a href="#purchase" className="nav-cta">
-              Get the Journal
-            </a>
+            <BuyNowButton className="nav-cta">Get the Journal</BuyNowButton>
           </li>
         </ul>
       </nav>
@@ -440,9 +439,11 @@ export default function Home() {
               <li>My Personal Experiences journaling pages</li>
               <li>Things I Need to Remember notes pages</li>
             </ul>
-            <a href="#" className="btn-primary" style={{ fontSize: "0.9rem", padding: "18px 52px" }}>
+            <BuyNowButton
+              style={{ fontSize: "0.9rem", padding: "18px 52px" }}
+            >
               Download Now — $19.99
-            </a>
+            </BuyNowButton>
             <p className="secure-note">
               🔒 Secure checkout · Digital PDF · Instant access
             </p>
