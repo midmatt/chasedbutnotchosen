@@ -47,10 +47,16 @@ export function getStripePriceId(): string {
   return priceId;
 }
 
+const PRODUCTION_SITE_URL = "https://chasedbutnotchosen.com";
+
 export function getBaseUrl(): string {
   const configured = readEnv("NEXT_PUBLIC_BASE_URL");
   if (configured) {
     return configured.replace(/\/$/, "");
+  }
+
+  if (process.env.VERCEL_ENV === "production") {
+    return PRODUCTION_SITE_URL;
   }
 
   const vercelUrl = readEnv("VERCEL_URL");
