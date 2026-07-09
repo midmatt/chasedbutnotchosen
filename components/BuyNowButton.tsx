@@ -8,6 +8,13 @@ type BuyNowButtonProps = {
   style?: React.CSSProperties;
 };
 
+type CheckoutErrorResponse = {
+  error?: string;
+  detail?: string;
+  type?: string;
+  code?: string;
+};
+
 export default function BuyNowButton({
   children,
   className = "btn-primary",
@@ -19,14 +26,23 @@ export default function BuyNowButton({
     setLoading(true);
     try {
       const response = await fetch("/api/checkout", { method: "POST" });
-      const data = await response.json();
+      const data = (await response.json()) as CheckoutErrorResponse & {
+        url?: string;
+      };
 
       if (!response.ok || !data.url) {
-        throw new Error(data.error ?? "Checkout failed");
+        console.error("Checkout API error:", {
+          status: response.status,
+          ...data,
+        });
+        throw new Error(
+          data.detail ?? data.error ?? `Checkout failed (${response.status})`,
+        );
       }
 
       window.location.href = data.url;
-    } catch {
+    } catch (error) {
+      console.error("Checkout failed:", error);
       setLoading(false);
       alert("Something went wrong starting checkout. Please try again.");
     }

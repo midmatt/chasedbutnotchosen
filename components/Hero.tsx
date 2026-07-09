@@ -1,7 +1,7 @@
 import Image from "next/image";
 import BuyNowButton from "./BuyNowButton";
 
-const BOOK_COVER_SRC = "/images/book-cover.jpg";
+const BOOK_COVER_SRC = "/images/book-cover.png";
 
 export default function Hero() {
   return (
@@ -49,8 +49,8 @@ export default function Hero() {
         <Image
           src={BOOK_COVER_SRC}
           alt="Being Chased But Not Chosen Journal Cover"
-          width={371}
-          height={557}
+          width={1136}
+          height={1464}
           className="book-mockup"
           priority
           sizes="(max-width: 768px) 292px, 371px"

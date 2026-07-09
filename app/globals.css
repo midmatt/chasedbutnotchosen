@@ -586,10 +586,10 @@
   }
   .page-viewer-image-wrap {
     position: relative;
-    aspect-ratio: 427 / 640;
+    aspect-ratio: 1130 / 1466;
     height: min(
       calc(100dvh - var(--page-viewer-toolbar-height) - var(--page-viewer-vertical-inset) - max(24px, env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px))),
-      calc((100vw - var(--page-viewer-horizontal-inset)) * 640 / 427),
+      calc((100vw - var(--page-viewer-horizontal-inset)) * 1466 / 1130),
       960px
     );
     width: auto;
@@ -746,19 +746,6 @@
   }
   footer p { font-size: 0.78rem; line-height: 1.8; }
   footer a { color: var(--blush-mid); text-decoration: none; }
-
-  /* ── BANNER STRIP ── */
-  .banner-strip {
-    background: var(--rose-deep);
-    color: #fff;
-    text-align: center;
-    padding: 14px;
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-  .banner-strip a { color: #fff; text-decoration: underline; }
 
   /* ── TESTIMONIAL AREA ── */
   .testimonial-section { background: var(--parchment); text-align: center; }

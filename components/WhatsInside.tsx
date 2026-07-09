@@ -69,8 +69,8 @@ export default function WhatsInside() {
               <Image
                 src={page.src}
                 alt={page.alt}
-                width={400}
-                height={220}
+                width={page.width}
+                height={page.height}
               />
               <div className="page-card-body">
                 <div className="page-card-title">{page.title}</div>

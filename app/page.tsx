@@ -5,10 +5,6 @@ import WhatsInside from "@/components/WhatsInside";
 export default function Home() {
   return (
     <>
-      <div className="banner-strip">
-        ♡ &nbsp; Digital download — instant access after purchase &nbsp; ♡
-      </div>
-
       <nav>
         <span className="nav-brand">Chased But Not Chosen</span>
         <ul className="nav-links">
@@ -277,8 +273,8 @@ export default function Home() {
                 className="checklist-img"
                 src="/images/checklist.png"
                 alt="The Checklist"
-                width={600}
-                height={800}
+                width={1130}
+                height={1466}
               />
             </div>
             <div>

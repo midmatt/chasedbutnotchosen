@@ -1,27 +1,22 @@
-import Stripe from "stripe";
 import { NextResponse } from "next/server";
-
-function getStripe() {
-  const secretKey = process.env.STRIPE_SECRET_KEY;
-  if (!secretKey) {
-    throw new Error("STRIPE_SECRET_KEY is not set");
-  }
-  return new Stripe(secretKey);
-}
+import {
+  formatCheckoutError,
+  getBaseUrl,
+  getStripe,
+  getStripePriceId,
+} from "@/lib/stripe-config";
 
 export async function POST() {
   try {
-    const priceId = process.env.STRIPE_PRICE_ID;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
-    if (!priceId || !baseUrl) {
-      return NextResponse.json(
-        { error: "Server configuration error" },
-        { status: 500 },
-      );
-    }
-
+    const priceId = getStripePriceId();
+    const baseUrl = getBaseUrl();
     const stripe = getStripe();
+
+    console.info("[checkout] Creating session", {
+      priceId,
+      baseUrl,
+      secretKeyPrefix: getStripeSecretKeyPrefix(),
+    });
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -31,17 +26,37 @@ export async function POST() {
     });
 
     if (!session.url) {
+      console.error("[checkout] Stripe returned session without url", {
+        sessionId: session.id,
+      });
       return NextResponse.json(
-        { error: "Failed to create checkout session" },
+        { error: "Failed to create checkout session", detail: "Missing session URL" },
         { status: 500 },
       );
     }
 
     return NextResponse.json({ url: session.url });
-  } catch {
+  } catch (error) {
+    const formatted = formatCheckoutError(error);
+
+    console.error("[checkout] Failed to create session", formatted, error);
+
     return NextResponse.json(
-      { error: "Failed to create checkout session" },
+      {
+        error: "Failed to create checkout session",
+        detail: formatted.message,
+        type: formatted.type,
+        code: formatted.code,
+      },
       { status: 500 },
     );
   }
+}
+
+function getStripeSecretKeyPrefix(): string {
+  const key =
+    process.env.STRIPE_SECRET_KEY_TEST?.trim() ||
+    process.env.STRIPE_SECRET_KEY?.trim() ||
+    "";
+  return key ? `${key.slice(0, 8)}…` : "missing";
 }

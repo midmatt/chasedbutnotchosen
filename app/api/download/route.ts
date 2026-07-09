@@ -1,14 +1,6 @@
-import Stripe from "stripe";
 import { NextRequest, NextResponse } from "next/server";
 import { getPdfUrl } from "@/lib/blob";
-
-function getStripe() {
-  const secretKey = process.env.STRIPE_SECRET_KEY;
-  if (!secretKey) {
-    throw new Error("STRIPE_SECRET_KEY is not set");
-  }
-  return new Stripe(secretKey);
-}
+import { getStripe } from "@/lib/stripe-config";
 
 export async function GET(request: NextRequest) {
   const sessionId = request.nextUrl.searchParams.get("session_id");
