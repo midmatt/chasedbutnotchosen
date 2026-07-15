@@ -4,14 +4,14 @@ import {
   getBaseUrl,
   getStripe,
   getStripeMode,
-  getStripePriceId,
+  resolveStripePriceId,
 } from "@/lib/stripe-config";
 
 export async function POST() {
   try {
-    const priceId = getStripePriceId();
-    const baseUrl = getBaseUrl();
     const stripe = getStripe();
+    const priceId = await resolveStripePriceId(stripe);
+    const baseUrl = getBaseUrl();
     const mode = getStripeMode();
 
     console.info("[checkout] Creating session", {

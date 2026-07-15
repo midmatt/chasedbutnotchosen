@@ -189,7 +189,8 @@
   }
   .hero-actions .btn-primary,
   .hero-actions .btn-secondary,
-  .hero-actions .btn-soon {
+  .hero-actions .btn-soon,
+  .hero-actions .btn-soon-wrap {
     margin-left: 0;
   }
   .btn-primary {
@@ -230,7 +231,12 @@
     transition: all 0.25s;
   }
   .btn-secondary:hover { background: var(--blush); transform: translateY(-2px); }
+  .btn-soon-wrap {
+    display: inline-block;
+    position: relative;
+  }
   .btn-soon {
+    position: relative;
     border-color: rgba(156, 112, 112, 0.45);
     color: rgba(92, 56, 56, 0.55);
     background: rgba(250, 244, 240, 0.85);
@@ -238,13 +244,41 @@
     cursor: not-allowed;
     pointer-events: none;
   }
+  .btn-soon-wrap::after {
+    content: "Coming soon";
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: var(--text-dark);
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 7px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .btn-soon-wrap:hover::after,
+  .btn-soon-wrap:focus-within::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
   .btn-secondary.btn-soon:disabled {
     opacity: 1;
     border-color: rgba(156, 112, 112, 0.45);
     color: rgba(92, 56, 56, 0.55);
     background: rgba(250, 244, 240, 0.85);
   }
-  .btn-soon:hover {
+  .btn-soon-wrap:hover .btn-soon {
     background: rgba(250, 244, 240, 0.85);
     transform: none;
   }
@@ -859,11 +893,15 @@
     }
     .hero-actions .btn-primary,
     .hero-actions .btn-secondary,
-    .hero-actions .btn-soon {
+    .hero-actions .btn-soon,
+    .hero-actions .btn-soon-wrap {
       display: block;
       width: 100%;
       margin-top: 0;
       text-align: center;
+    }
+    .hero-actions .btn-soon-wrap .btn-soon {
+      width: 100%;
     }
     .page-viewer-overlay {
       --page-viewer-toolbar-height: 60px;

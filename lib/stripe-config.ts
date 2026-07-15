@@ -15,16 +15,6 @@ function isProductionDeploy(): boolean {
   return process.env.VERCEL_ENV === "production";
 }
 
-function assertPriceId(priceId: string): string {
-  if (!priceId.startsWith("price_")) {
-    throw new Error(
-      "Stripe price ID must start with price_ (check Vercel env var value)",
-    );
-  }
-
-  return priceId;
-}
-
 function assertSecretKey(key: string, requireLive: boolean): string {
   if (!key.startsWith("sk_test_") && !key.startsWith("sk_live_")) {
     throw new Error(
@@ -74,27 +64,82 @@ export function getStripePublishableKey(): string | undefined {
 }
 
 export function getStripePriceId(): string {
-  if (isProductionDeploy()) {
-    const priceId = readEnv("STRIPE_PRICE_ID");
+  const configured = getConfiguredPriceOrProductId();
 
-    if (!priceId) {
+  if (!configured) {
+    if (isProductionDeploy()) {
       throw new Error(
-        "STRIPE_PRICE_ID must be set in production (live price_... from your Stripe product)",
+        "STRIPE_PRICE_ID must be set in production (price_... or prod_... from Stripe)",
       );
     }
 
-    return assertPriceId(priceId);
-  }
-
-  const priceId = readEnv("STRIPE_PRICE_ID", "STRIPE_PRICE_ID_TEST");
-
-  if (!priceId) {
     throw new Error(
       "Stripe price ID is not set (STRIPE_PRICE_ID or STRIPE_PRICE_ID_TEST)",
     );
   }
 
-  return assertPriceId(priceId);
+  if (configured.startsWith("price_")) {
+    return configured;
+  }
+
+  if (configured.startsWith("prod_")) {
+    return configured;
+  }
+
+  throw new Error(
+    "STRIPE_PRICE_ID must start with price_ or prod_ (check Vercel env var value)",
+  );
+}
+
+function getConfiguredPriceOrProductId(): string | undefined {
+  if (isProductionDeploy()) {
+    return readEnv("STRIPE_PRICE_ID", "STRIPE_PRODUCT_ID");
+  }
+
+  return readEnv("STRIPE_PRICE_ID", "STRIPE_PRICE_ID_TEST", "STRIPE_PRODUCT_ID");
+}
+
+export async function resolveStripePriceId(stripe: Stripe): Promise<string> {
+  const configured = getStripePriceId();
+
+  if (configured.startsWith("price_")) {
+    return configured;
+  }
+
+  return resolvePriceFromProduct(stripe, configured);
+}
+
+async function resolvePriceFromProduct(
+  stripe: Stripe,
+  productId: string,
+): Promise<string> {
+  const product = await stripe.products.retrieve(productId, {
+    expand: ["default_price"],
+  });
+
+  const defaultPrice = product.default_price;
+
+  if (typeof defaultPrice === "string") {
+    return defaultPrice;
+  }
+
+  if (defaultPrice && typeof defaultPrice === "object" && "id" in defaultPrice) {
+    return defaultPrice.id;
+  }
+
+  const prices = await stripe.prices.list({
+    product: productId,
+    active: true,
+    limit: 1,
+  });
+
+  const price = prices.data[0]?.id;
+
+  if (!price) {
+    throw new Error(`No active price found for Stripe product ${productId}`);
+  }
+
+  return price;
 }
 
 export function getStripeMode(): "live" | "test" {

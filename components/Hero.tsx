@@ -37,16 +37,21 @@ export default function Hero() {
           <a href="#inside" className="btn-secondary">
             Preview Inside
           </a>
-          <button
-            type="button"
-            className="btn-secondary btn-soon"
-            disabled
-            aria-disabled="true"
-            aria-label="Physical copy — coming soon"
+          <span
+            className="btn-soon-wrap"
             title="Coming soon"
+            aria-label="Physical copy — coming soon"
           >
-            Physical Copy
-          </button>
+            <button
+              type="button"
+              className="btn-secondary btn-soon"
+              disabled
+              aria-disabled="true"
+              tabIndex={-1}
+            >
+              Physical Copy
+            </button>
+          </span>
         </div>
         <div className="hero-tags">
           <span className="tag">Self-Reflection</span>
