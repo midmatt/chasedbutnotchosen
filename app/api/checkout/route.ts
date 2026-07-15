@@ -3,6 +3,7 @@ import {
   formatCheckoutError,
   getBaseUrl,
   getStripe,
+  getStripeMode,
   getStripePriceId,
 } from "@/lib/stripe-config";
 
@@ -11,8 +12,10 @@ export async function POST() {
     const priceId = getStripePriceId();
     const baseUrl = getBaseUrl();
     const stripe = getStripe();
+    const mode = getStripeMode();
 
     console.info("[checkout] Creating session", {
+      mode,
       priceId,
       baseUrl,
       secretKeyPrefix: getStripeSecretKeyPrefix(),
@@ -54,9 +57,18 @@ export async function POST() {
 }
 
 function getStripeSecretKeyPrefix(): string {
-  const key =
+  const key = isProductionKeyLookup();
+  return key ? `${key.slice(0, 8)}…` : "missing";
+}
+
+function isProductionKeyLookup(): string {
+  if (process.env.VERCEL_ENV === "production") {
+    return process.env.STRIPE_SECRET_KEY?.trim() || "";
+  }
+
+  return (
     process.env.STRIPE_SECRET_KEY?.trim() ||
     process.env.STRIPE_SECRET_KEY_TEST?.trim() ||
-    "";
-  return key ? `${key.slice(0, 8)}…` : "missing";
+    ""
+  );
 }

@@ -39,13 +39,13 @@ export default function Hero() {
           </a>
           <button
             type="button"
-            className="btn-secondary"
+            className="btn-secondary btn-soon"
             disabled
             aria-disabled="true"
-            aria-label="Physical book — coming soon"
+            aria-label="Physical copy — coming soon"
             title="Coming soon"
           >
-            Physical Book
+            Physical Copy
           </button>
         </div>
         <div className="hero-tags">

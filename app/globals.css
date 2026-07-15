@@ -188,7 +188,8 @@
     gap: 10px 14px;
   }
   .hero-actions .btn-primary,
-  .hero-actions .btn-secondary {
+  .hero-actions .btn-secondary,
+  .hero-actions .btn-soon {
     margin-left: 0;
   }
   .btn-primary {
@@ -229,6 +230,24 @@
     transition: all 0.25s;
   }
   .btn-secondary:hover { background: var(--blush); transform: translateY(-2px); }
+  .btn-soon {
+    border-color: rgba(156, 112, 112, 0.45);
+    color: rgba(92, 56, 56, 0.55);
+    background: rgba(250, 244, 240, 0.85);
+    opacity: 1;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  .btn-secondary.btn-soon:disabled {
+    opacity: 1;
+    border-color: rgba(156, 112, 112, 0.45);
+    color: rgba(92, 56, 56, 0.55);
+    background: rgba(250, 244, 240, 0.85);
+  }
+  .btn-soon:hover {
+    background: rgba(250, 244, 240, 0.85);
+    transform: none;
+  }
   .btn-secondary:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -839,7 +858,8 @@
       align-items: stretch;
     }
     .hero-actions .btn-primary,
-    .hero-actions .btn-secondary {
+    .hero-actions .btn-secondary,
+    .hero-actions .btn-soon {
       display: block;
       width: 100%;
       margin-top: 0;
