@@ -32,10 +32,22 @@ export default function Hero() {
           </p>
         </div>
         <p className="hero-price">Instant Digital Download</p>
-        <BuyNowButton>Buy Now — $19.99</BuyNowButton>
-        <a href="#inside" className="btn-secondary">
-          Preview Inside
-        </a>
+        <div className="hero-actions">
+          <BuyNowButton>Buy Now — $19.99</BuyNowButton>
+          <a href="#inside" className="btn-secondary">
+            Preview Inside
+          </a>
+          <button
+            type="button"
+            className="btn-secondary"
+            disabled
+            aria-disabled="true"
+            aria-label="Physical book — coming soon"
+            title="Coming soon"
+          >
+            Physical Book
+          </button>
+        </div>
         <div className="hero-tags">
           <span className="tag">Self-Reflection</span>
           <span className="tag">Emotional Awareness</span>

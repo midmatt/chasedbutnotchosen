@@ -12,11 +12,11 @@ function readEnv(...names: string[]): string | undefined {
 }
 
 export function getStripeSecretKey(): string {
-  const key = readEnv("STRIPE_SECRET_KEY_TEST", "STRIPE_SECRET_KEY");
+  const key = readEnv("STRIPE_SECRET_KEY", "STRIPE_SECRET_KEY_TEST");
 
   if (!key) {
     throw new Error(
-      "Stripe secret key is not set (STRIPE_SECRET_KEY_TEST or STRIPE_SECRET_KEY)",
+      "Stripe secret key is not set (STRIPE_SECRET_KEY or STRIPE_SECRET_KEY_TEST)",
     );
   }
 
@@ -29,12 +29,16 @@ export function getStripeSecretKey(): string {
   return key;
 }
 
+export function getStripePublishableKey(): string | undefined {
+  return readEnv("STRIPE_PUBLISHABLE_KEY", "STRIPE_PUBLISHABLE_KEY_TEST");
+}
+
 export function getStripePriceId(): string {
-  const priceId = readEnv("STRIPE_PRICE_ID_TEST", "STRIPE_PRICE_ID");
+  const priceId = readEnv("STRIPE_PRICE_ID", "STRIPE_PRICE_ID_TEST");
 
   if (!priceId) {
     throw new Error(
-      "Stripe price ID is not set (STRIPE_PRICE_ID_TEST or STRIPE_PRICE_ID)",
+      "Stripe price ID is not set (STRIPE_PRICE_ID or STRIPE_PRICE_ID_TEST)",
     );
   }
 

@@ -55,8 +55,8 @@ export async function POST() {
 
 function getStripeSecretKeyPrefix(): string {
   const key =
-    process.env.STRIPE_SECRET_KEY_TEST?.trim() ||
     process.env.STRIPE_SECRET_KEY?.trim() ||
+    process.env.STRIPE_SECRET_KEY_TEST?.trim() ||
     "";
   return key ? `${key.slice(0, 8)}…` : "missing";
 }

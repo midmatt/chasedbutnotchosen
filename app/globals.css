@@ -181,6 +181,16 @@
     color: var(--text-soft);
     margin-bottom: 8px;
   }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+  }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    margin-left: 0;
+  }
   .btn-primary {
     display: inline-block;
     background: var(--rose-deep);
@@ -219,6 +229,15 @@
     transition: all 0.25s;
   }
   .btn-secondary:hover { background: var(--blush); transform: translateY(-2px); }
+  .btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  .btn-secondary:disabled:hover {
+    background: transparent;
+    transform: none;
+  }
   .hero-tags {
     display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px;
   }
@@ -815,6 +834,17 @@
     .section-inner { padding: 60px 24px; }
     .purchase-card { padding: 36px 24px; }
     .btn-secondary { margin-left: 0; margin-top: 10px; display: block; text-align: center; }
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .hero-actions .btn-primary,
+    .hero-actions .btn-secondary {
+      display: block;
+      width: 100%;
+      margin-top: 0;
+      text-align: center;
+    }
     .page-viewer-overlay {
       --page-viewer-toolbar-height: 60px;
       --page-viewer-horizontal-inset: 88px;
