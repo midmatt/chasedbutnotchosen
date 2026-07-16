@@ -1,11 +1,34 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import BuyNowButton from "@/components/BuyNowButton";
 import Hero from "@/components/Hero";
 import WhatsInside from "@/components/WhatsInside";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TAGLINE,
+  getBookSchema,
+} from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: `${SITE_NAME} | ${SITE_TAGLINE}`,
+  },
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getBookSchema()),
+        }}
+      />
       <nav>
         <span className="nav-brand">Chased But Not Chosen</span>
         <ul className="nav-links">
@@ -271,7 +294,7 @@ export default function Home() {
               <Image
                 className="checklist-img"
                 src="/images/checklist.png"
-                alt="The Checklist"
+                alt="Preview of 'The Checklist I Wish I Had Sooner' journal page, listing relationship red flags to stop ignoring"
                 width={1130}
                 height={1463}
                 sizes="(max-width: 768px) 100vw, 540px"

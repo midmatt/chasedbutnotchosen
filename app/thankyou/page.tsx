@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SuccessConfetti from "@/components/SuccessConfetti";
+
+export const metadata: Metadata = {
+  title: "Thank You for Your Purchase",
+  description:
+    "Your purchase is complete. Download your Being Chased, But Not Chosen journal PDF and start your healing journey.",
+  alternates: {
+    canonical: "/thankyou",
+  },
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 type ThankYouPageProps = {
   searchParams: Promise<{ session_id?: string }>;

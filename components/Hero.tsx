@@ -65,7 +65,7 @@ export default function Hero() {
       <div className="hero-visual">
         <Image
           src={BOOK_COVER_SRC}
-          alt="Being Chased But Not Chosen Journal Cover"
+          alt="Cover of the Being Chased, But Not Chosen healing journal, featuring a line-art illustration of a woman and soft floral accents"
           width={1130}
           height={1461}
           className="book-mockup"

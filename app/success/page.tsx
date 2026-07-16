@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: "Order Complete",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 type SuccessPageProps = {
   searchParams: Promise<{ session_id?: string }>;
