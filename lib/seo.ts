@@ -19,13 +19,9 @@ export const OG_IMAGE = {
   alt: "Being Chased, But Not Chosen — a journal for healing and returning to yourself",
 };
 
-// TODO(seo): Confirm the author. Defaulting to the brand as an Organization.
-// If the journal is authored by a named person, swap this to:
-//   { "@type": "Person", name: "Author Name" }
 const BOOK_AUTHOR = {
-  "@type": "Organization",
-  name: SITE_NAME,
-  url: SITE_URL,
+  "@type": "Person",
+  name: "Mila Albertine",
 };
 
 export function getOrganizationSchema() {
